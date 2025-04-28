@@ -1,0 +1,20 @@
+/* Общий фон и отступы */
+body {
+    background-color: #f8f9fa;
+    padding-top: 4.5rem; /* место под фиксированное меню */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Контейнер вокруг контента */
+.main-container {
+    background: #ffffff;
+    border-radius: 0.25rem;
+    padding: 2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+/* Стили таблиц */
+.table-custom {
+    margin-top: 1rem;
+}

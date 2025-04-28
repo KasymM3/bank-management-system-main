@@ -1,0 +1,12 @@
+<!-- src/main/resources/templates/accounts-user.html -->
+<form th:action="@{/user/withdraw}" method="post">
+    <input type="hidden" name="customerId" th:value="${#authentication.principal.id}" />
+    <input type="number" name="amount" placeholder="Amount"/>
+    <button type="submit">Withdraw</button>
+</form>
+
+<form th:action="@{/user/deposit}" method="post">
+    <input type="hidden" name="customerId" th:value="${#authentication.principal.id}" />
+    <input type="number" name="amount" placeholder="Amount"/>
+    <button type="submit">Deposit</button>
+</form>

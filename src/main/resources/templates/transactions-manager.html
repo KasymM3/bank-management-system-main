@@ -1,0 +1,19 @@
+<!-- src/main/resources/templates/transactions-manager.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Manager Transactions</title></head>
+<body>
+<h1>Manager View: Transactions</h1>
+<table>
+    <thead><tr><th>ID</th><th>Type</th><th>Amount</th><th>Date</th></tr></thead>
+    <tbody>
+    <tr th:each="t : ${transactions}">
+        <td th:text="${t.id}"></td>
+        <td th:text="${t.transactionType}"></td>
+        <td th:text="${t.amount}"></td>
+        <td th:text="${t.date}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

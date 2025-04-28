@@ -1,0 +1,18 @@
+<!-- src/main/resources/templates/users.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>All Users</title></head>
+<body>
+<h1>All Users</h1>
+<table>
+    <thead><tr><th>ID</th><th>Username</th><th>Role</th></tr></thead>
+    <tbody>
+    <tr th:each="u : ${users}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.username}"></td>
+        <td th:text="${u.role}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
