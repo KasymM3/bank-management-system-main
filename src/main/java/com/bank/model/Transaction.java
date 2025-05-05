@@ -23,6 +23,7 @@ public class Transaction {
     @Column(nullable = false)
     private double amount;
 
+
     @Schema(description = "Дата и время транзакции")
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
@@ -31,6 +32,7 @@ public class Transaction {
     @Schema(description = "Счёт, по которому проведена транзакция")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id", nullable = false)
+
     private Account account;
 
     // ======== Геттеры и сеттеры ========
@@ -73,4 +75,6 @@ public class Transaction {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+
 }

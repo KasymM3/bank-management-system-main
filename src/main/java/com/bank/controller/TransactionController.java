@@ -2,6 +2,7 @@
 package com.bank.controller;
 
 import com.bank.model.Transaction;
+import com.bank.service.BankService;
 import com.bank.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,15 +18,13 @@ import java.util.List;
 public class TransactionController {
 
     @Autowired
-    private TransactionService transactionService;
+    private BankService bankService;
 
-    @Operation(
-            summary = "Список транзакций",
-            description = "Возвращает страницу со списком всех транзакций"
-    )
+    @Tag(name = "Transactions", description = "Отображение истории транзакций")
+    @Operation(summary = "Список транзакций", description = "Возвращает страницу со всеми транзакциями")
     @GetMapping("/transactions")
     public String listTransactions(Model model) {
-        List<Transaction> transactions = transactionService.getAllTransactions();
+        List<Transaction> transactions = bankService.getAllTransactions();
         model.addAttribute("transactions", transactions);
         return "transactions";
     }

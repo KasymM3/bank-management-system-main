@@ -4,6 +4,9 @@ package com.bank.model;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Schema(description = "Банковский счёт клиента")
 @Entity
 @Table(name = "accounts")
@@ -22,6 +25,10 @@ public class Account {
     @Column(nullable = false)
     private double balance;
 
+    @OneToMany(mappedBy = "account",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Transaction> transactions = new ArrayList<>();
     @Schema(description = "Владелец счёта")
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
