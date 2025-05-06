@@ -66,10 +66,13 @@
         <!-- Таблица существующих -->
         <div class="col-md-8">
             <h4>Список клиентов</h4>
-            <!-- Кнопка экспорта CSV -->
+            <!-- Кнопки экспорта CSV и Excel -->
             <div class="mb-3">
-                <a th:href="@{/customers/export}" class="btn btn-primary">
+                <a th:href="@{/customers/export}" class="btn btn-primary me-2">
                     Скачать CSV
+                </a>
+                <a th:href="@{/customers/email}" class="btn btn-success">
+                    Отправить Excel на почту
                 </a>
             </div>
             <table class="table table-striped table-bordered">

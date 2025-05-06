@@ -21,9 +21,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" th:href="@{/customers}">Клиенты</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/transactions}">Транзакции</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/create-transaction}">Создать</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/customers}">Клиенты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/transactions}">Транзакции</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/create-transaction}">Создать</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -31,6 +37,17 @@
 
 <main class="container main-container" style="margin-top: 70px;">
     <h2>Список транзакций</h2>
+
+    <!-- Кнопки CSV и Excel -->
+    <div class="mb-3">
+        <a th:href="@{/transactions/export}" class="btn btn-primary me-2">
+            Скачать CSV
+        </a>
+        <a th:href="@{/transactions/email}" class="btn btn-success">
+            Отправить Excel на почту
+        </a>
+    </div>
+
     <table class="table table-striped table-bordered table-custom">
         <thead class="table-light">
         <tr>
@@ -51,6 +68,7 @@
         </tr>
         </tbody>
     </table>
+
     <a class="btn btn-secondary" th:href="@{/home}">Назад на панель</a>
 </main>
 
