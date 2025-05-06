@@ -7,12 +7,15 @@ import com.bank.repository.TransactionRepository;
 import com.bank.service.BankService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Tag(name = "Customers", description = "Управление клиентами банка")
@@ -79,4 +82,21 @@ public class BankController {
         return "createTransaction";
     }
 
+    @Operation(
+            summary = "Экспорт клиентов в CSV",
+            description = "Генерирует CSV-файл со списком всех клиентов"
+    )
+    @GetMapping("/customers/export")
+    public void exportCustomersToCSV(HttpServletResponse response) throws IOException {
+        response.setContentType("text/csv");
+        response.setHeader("Content-Disposition", "attachment; filename=\"customers.csv\"");
+        List<Customer> customers = bankService.getAllCustomers();
+        PrintWriter writer = response.getWriter();
+        // Заголовок CSV
+        writer.println("ID,Name,Email");
+        for (Customer c : customers) {
+            writer.println(c.getId() + "," + c.getName() + "," + c.getEmail());
+        }
+        writer.flush();
+    }
 }
